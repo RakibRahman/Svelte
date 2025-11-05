@@ -1,8 +1,66 @@
-# sv
+# Svelte Learning Repository
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals, featuring modern Svelte Runes and reactive state management.
 
-## Creating a project
+## Topics Covered
+
+### Svelte 5 Runes
+- **`$state`** - Local reactive state management
+- **`$derived`** - Computed/derived state from other reactive values
+- **`$effect`** - Side effects and lifecycle management with cleanup
+- **`$props`** - Component props with TypeScript types
+- **`$inspect`** - Debugging reactive state changes
+- **`$state.snapshot`** - Capturing state snapshots for logging
+
+### Core Concepts
+- Component composition and nested components
+- Props passing and prop spreading (`{...props}`)
+- Event handling with `onclick` and other event handlers
+- Conditional rendering with `{#if}`, `{:else if}`, `{:else}`
+- List rendering with `{#each}` blocks
+- Template expressions and dynamic attributes
+- Component-scoped CSS styling
+
+### State Management
+- Local component state with `$state` rune
+- Global shared state using shared modules
+- Array state mutations and reactivity
+- Derived/computed values with `$derived`
+
+### TypeScript Integration
+- Type-safe component props
+- Exported TypeScript types/interfaces
+- Full TypeScript support configuration
+
+### SvelteKit Features
+- File-based routing (`+page.svelte`)
+- Layout components (`+layout.svelte`)
+- Page navigation and links
+- Auto adapter configuration
+
+## Project Structure
+
+```
+src/
+├── routes/
+│   ├── +page.svelte          # Homepage with component examples
+│   ├── +layout.svelte         # Root layout component
+│   └── logic/
+│       └── +page.svelte       # Logic/conditionals demo page
+├── componets/                 # Component library
+│   ├── BasicCounter.svelte    # Local state example
+│   ├── Counter.svelte         # Global state example
+│   ├── ArrayState.svelte      # Array state & $derived
+│   ├── TimerEffect.svelte     # $effect rune with cleanup
+│   ├── User.svelte            # Props & TypeScript
+│   └── Nested.svelte          # Component composition
+└── shared/
+    └── shared.svelte.ts       # Global state store
+```
+
+## Getting Started
+
+### Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!
 
@@ -14,9 +72,19 @@ npx sv create
 npx sv create my-app
 ```
 
-## Developing
+### Installing Dependencies
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```sh
+npm install
+# or
+pnpm install
+# or
+yarn
+```
+
+### Developing
+
+Start a development server:
 
 ```sh
 npm run dev
@@ -25,7 +93,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 
@@ -36,3 +104,30 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Learning Resources
+
+- [Svelte Documentation](https://svelte.dev/docs)
+- [SvelteKit Documentation](https://svelte.dev/docs/kit)
+- [Svelte 5 Runes Guide](https://svelte.dev/docs/svelte/what-are-runes)
+- [Svelte Tutorial](https://svelte.dev/tutorial)
+
+## Key Examples in This Repo
+
+### Local State Management
+See [BasicCounter.svelte](src/componets/BasicCounter.svelte) for a simple counter using `$state` rune.
+
+### Global State Sharing
+See [Counter.svelte](src/componets/Counter.svelte) and [shared.svelte.ts](src/shared/shared.svelte.ts) for shared state across multiple components.
+
+### Derived State & Array Reactivity
+See [ArrayState.svelte](src/componets/ArrayState.svelte) for `$derived` and array state management.
+
+### Side Effects & Cleanup
+See [TimerEffect.svelte](src/componets/TimerEffect.svelte) for `$effect` with interval cleanup.
+
+### Props & TypeScript
+See [User.svelte](src/componets/User.svelte) for typed component props using `$props` rune.
+
+### Conditional & List Rendering
+See [logic/+page.svelte](src/routes/logic/+page.svelte) for `{#if}` and `{#each}` block examples.
