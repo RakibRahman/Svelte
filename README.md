@@ -17,7 +17,8 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - Props passing and prop spreading (`{...props}`)
 - Event handling with `onclick` and other event handlers
 - Conditional rendering with `{#if}`, `{:else if}`, `{:else}`
-- List rendering with `{#each}` blocks
+- List rendering with `{#each}` blocks and keyed iterations
+- Async handling with `{#await}` blocks (`:then`, `:catch`)
 - Template expressions and dynamic attributes
 - Component-scoped CSS styling
 
@@ -129,5 +130,9 @@ See [TimerEffect.svelte](src/componets/TimerEffect.svelte) for `$effect` with in
 ### Props & TypeScript
 See [User.svelte](src/componets/User.svelte) for typed component props using `$props` rune.
 
-### Conditional & List Rendering
-See [logic/+page.svelte](src/routes/logic/+page.svelte) for `{#if}` and `{#each}` block examples.
+### Logic Blocks & Control Flow
+See [logic/+page.svelte](src/routes/logic/+page.svelte) for comprehensive examples:
+- Conditional rendering with `{#if}`, `{:else if}`, `{:else}` blocks
+- List rendering with `{#each}` blocks
+- Keyed each blocks for optimized list updates
+- Async operations with `{#await}` blocks (promise handling, API calls)
