@@ -15,7 +15,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 ### Core Concepts
 - Component composition and nested components
 - Props passing and prop spreading (`{...props}`)
-- Event handling with `onclick` and other event handlers
+- **Event handling** - DOM events, inline handlers, event capture, component events
 - Conditional rendering with `{#if}`, `{:else if}`, `{:else}`
 - List rendering with `{#each}` blocks and keyed iterations
 - Async handling with `{#await}` blocks (`:then`, `:catch`)
@@ -46,15 +46,18 @@ src/
 ├── routes/
 │   ├── +page.svelte          # Homepage with component examples
 │   ├── +layout.svelte         # Root layout component
-│   └── logic/
-│       └── +page.svelte       # Logic/conditionals demo page
+│   ├── logic/
+│   │   └── +page.svelte       # Logic/conditionals demo page
+│   └── events/
+│       └── +page.svelte       # Event handling demo page
 ├── componets/                 # Component library
 │   ├── BasicCounter.svelte    # Local state example
 │   ├── Counter.svelte         # Global state example
 │   ├── ArrayState.svelte      # Array state & $derived
 │   ├── TimerEffect.svelte     # $effect rune with cleanup
 │   ├── User.svelte            # Props & TypeScript
-│   └── Nested.svelte          # Component composition
+│   ├── Nested.svelte          # Component composition
+│   └── Stepper.svelte         # Component events (callback props)
 └── shared/
     └── shared.svelte.ts       # Global state store
 ```
@@ -136,3 +139,11 @@ See [logic/+page.svelte](src/routes/logic/+page.svelte) for comprehensive exampl
 - List rendering with `{#each}` blocks
 - Keyed each blocks for optimized list updates
 - Async operations with `{#await}` blocks (promise handling, API calls)
+
+### Event Handling
+See [events/+page.svelte](src/routes/events/+page.svelte) for event handling patterns:
+- **DOM event handlers** - Attach event listeners with `on:eventname` (e.g., `onpointermove`, `onclick`)
+- **Inline handlers** - Use arrow functions directly in templates
+- **Event capture** - Handle events in capture phase with `oneventnamecapture`
+- **Component events** - Pass callback functions as props for child-to-parent communication
+- **Event modifiers** - Use modifiers like `preventDefault`, `stopPropagation`, `once`, etc.

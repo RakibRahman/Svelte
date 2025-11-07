@@ -25,11 +25,12 @@
     <section class="welcome">
         <h1>Hello {name}!</h1>
         <p>
-            Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the
-            documentation
+            Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to
+            read the documentation
         </p>
         <nav class="page-nav">
             <a href="/logic" class="nav-button">Go to Logic Page →</a>
+            <a href="/events" class="nav-button">Go to Events Page →</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
@@ -63,7 +64,8 @@
             <h3>Props ($props rune)</h3>
             <p>Passing data to child components:</p>
             <User name="rakib" age={29} />
-            <User {...user} /> <!-- Spread props -->
+            <User {...user} />
+            <!-- Spread props -->
         </div>
     </section>
 </div>
