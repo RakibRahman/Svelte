@@ -21,6 +21,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - Async handling with `{#await}` blocks (`:then`, `:catch`)
 - Template expressions and dynamic attributes
 - Component-scoped CSS styling
+- **Classes and styles** - Dynamic class binding, style directives, CSS custom properties
 
 ### State Management
 - Local component state with `$state` rune
@@ -48,8 +49,12 @@ src/
 │   ├── +layout.svelte         # Root layout component
 │   ├── logic/
 │   │   └── +page.svelte       # Logic/conditionals demo page
-│   └── events/
-│       └── +page.svelte       # Event handling demo page
+│   ├── events/
+│   │   └── +page.svelte       # Event handling demo page
+│   ├── bindings/
+│   │   └── +page.svelte       # Form bindings demo page
+│   └── classes-styles/
+│       └── +page.svelte       # Classes and styles demo page
 ├── componets/                 # Component library
 │   ├── BasicCounter.svelte    # Local state example
 │   ├── Counter.svelte         # Global state example
@@ -57,7 +62,14 @@ src/
 │   ├── TimerEffect.svelte     # $effect rune with cleanup
 │   ├── User.svelte            # Props & TypeScript
 │   ├── Nested.svelte          # Component composition
-│   └── Stepper.svelte         # Component events (callback props)
+│   ├── Stepper.svelte         # Component events (callback props)
+│   ├── TextBinding.svelte     # Text input binding
+│   ├── NumericBinding.svelte  # Numeric input binding
+│   ├── TextareaBinding.svelte # Textarea binding
+│   ├── CheckboxBinding.svelte # Checkbox binding
+│   ├── SelectElement.svelte   # Select element binding
+│   ├── GroupInputs.svelte     # Radio & checkbox groups
+│   └── Box.svelte             # Component with CSS custom properties
 └── shared/
     └── shared.svelte.ts       # Global state store
 ```
@@ -147,3 +159,21 @@ See [events/+page.svelte](src/routes/events/+page.svelte) for event handling pat
 - **Event capture** - Handle events in capture phase with `oneventnamecapture`
 - **Component events** - Pass callback functions as props for child-to-parent communication
 - **Event modifiers** - Use modifiers like `preventDefault`, `stopPropagation`, `once`, etc.
+
+### Form Bindings
+See [bindings/+page.svelte](src/routes/bindings/+page.svelte) for comprehensive binding examples:
+- **Text input binding** - `bind:value` for two-way data binding with text inputs
+- **Numeric inputs** - Automatic type coercion for number and range inputs
+- **Textarea binding** - Multi-line text input binding
+- **Checkbox binding** - `bind:checked` for boolean checkbox state
+- **Select binding** - Binding select elements to objects and primitives
+- **Group bindings** - `bind:group` for radio button groups and checkbox groups
+- **Multi-select** - Binding multiple selections to arrays
+
+### Classes and Styles
+See [classes-styles/+page.svelte](src/routes/classes-styles/+page.svelte) for styling patterns:
+- **Class directive** - Conditional CSS classes with `class={condition ? 'active' : ''}`
+- **Style directive** - Inline reactive styles with `style:property={value}`
+- **CSS custom properties** - Pass CSS variables to components with `--variable` props
+- **Global CSS modifier** - Use `:global()` to target elements inside other components
+- **Shorthand syntax** - Use `style:color` when variable name matches CSS property

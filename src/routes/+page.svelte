@@ -31,6 +31,10 @@
         <nav class="page-nav">
             <a href="/logic" class="nav-button">Go to Logic Page →</a>
             <a href="/events" class="nav-button">Go to Events Page →</a>
+            <a href="/bindings" class="nav-button">Go to Bindings Page →</a>
+            <a href="/classes-styles" class="nav-button"
+                >Go to Classes and styles Page →</a
+            >
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
