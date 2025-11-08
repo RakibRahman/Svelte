@@ -23,6 +23,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - Component-scoped CSS styling
 - **Classes and styles** - Dynamic class binding, style directives, CSS custom properties
 - **Actions** - Element-level lifecycle functions for custom behavior
+- **Transitions** - Animate elements entering and leaving the DOM
 
 ### State Management
 - Local component state with `$state` rune
@@ -56,8 +57,10 @@ src/
 │   │   └── +page.svelte       # Form bindings demo page
 │   ├── classes-styles/
 │   │   └── +page.svelte       # Classes and styles demo page
-│   └── actions/
-│       └── +page.svelte       # Actions demo page
+│   ├── actions/
+│   │   └── +page.svelte       # Actions demo page
+│   └── transitions/
+│       └── +page.svelte       # Transitions demo page
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
 ├── componets/                 # Component library
@@ -191,3 +194,13 @@ See [actions/+page.svelte](src/routes/actions/+page.svelte) for actions patterns
 - **Focus management** - Trap focus within modal dialogs with custom `trapFocus` action
 - **Canvas integration** - Interactive drawing canvas using pointer events
 - **Cleanup** - Return cleanup functions from actions for proper teardown
+
+### Transitions
+See [transitions/+page.svelte](src/routes/transitions/+page.svelte) for transition patterns:
+- **Built-in transitions** - Use `fade`, `fly`, `slide`, `scale`, `blur`, and `draw` transitions
+- **Directional control** - Separate `in:` and `out:` directives for different enter/exit animations
+- **Custom CSS transitions** - Create custom transitions by returning CSS properties over time
+- **Custom JS transitions** - Use JavaScript to control transition behavior with the `tick` function
+- **Transition events** - Listen to `onintrostart`, `onintroend`, `onoutrostart`, `onoutroend`
+- **Key blocks** - Trigger transitions on value changes with `{#key}` blocks
+- **Global modifier** - Use `transition:name|global` to play transitions on parent block changes

@@ -36,6 +36,7 @@
                 >Go to Classes and styles Page →</a
             >
             <a href="/actions" class="nav-button">Go to Actions Page →</a>
+            <a href="/transitions" class="nav-button">Go to Transitions Page →</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
