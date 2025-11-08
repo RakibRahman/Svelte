@@ -22,6 +22,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - Template expressions and dynamic attributes
 - Component-scoped CSS styling
 - **Classes and styles** - Dynamic class binding, style directives, CSS custom properties
+- **Actions** - Element-level lifecycle functions for custom behavior
 
 ### State Management
 - Local component state with `$state` rune
@@ -53,8 +54,12 @@ src/
 │   │   └── +page.svelte       # Event handling demo page
 │   ├── bindings/
 │   │   └── +page.svelte       # Form bindings demo page
-│   └── classes-styles/
-│       └── +page.svelte       # Classes and styles demo page
+│   ├── classes-styles/
+│   │   └── +page.svelte       # Classes and styles demo page
+│   └── actions/
+│       └── +page.svelte       # Actions demo page
+├── actions/
+│   └── trapFocus.svelte.ts    # Focus trap action
 ├── componets/                 # Component library
 │   ├── BasicCounter.svelte    # Local state example
 │   ├── Counter.svelte         # Global state example
@@ -69,7 +74,8 @@ src/
 │   ├── CheckboxBinding.svelte # Checkbox binding
 │   ├── SelectElement.svelte   # Select element binding
 │   ├── GroupInputs.svelte     # Radio & checkbox groups
-│   └── Box.svelte             # Component with CSS custom properties
+│   ├── Box.svelte             # Component with CSS custom properties
+│   └── Canvas.svelte          # Drawing canvas component
 └── shared/
     └── shared.svelte.ts       # Global state store
 ```
@@ -177,3 +183,11 @@ See [classes-styles/+page.svelte](src/routes/classes-styles/+page.svelte) for st
 - **CSS custom properties** - Pass CSS variables to components with `--variable` props
 - **Global CSS modifier** - Use `:global()` to target elements inside other components
 - **Shorthand syntax** - Use `style:color` when variable name matches CSS property
+
+### Actions
+See [actions/+page.svelte](src/routes/actions/+page.svelte) for actions patterns:
+- **Element lifecycle** - Run code when elements are created and destroyed
+- **use directive** - Apply actions with `use:actionName` on any element
+- **Focus management** - Trap focus within modal dialogs with custom `trapFocus` action
+- **Canvas integration** - Interactive drawing canvas using pointer events
+- **Cleanup** - Return cleanup functions from actions for proper teardown

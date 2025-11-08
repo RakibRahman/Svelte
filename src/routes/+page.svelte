@@ -35,6 +35,7 @@
             <a href="/classes-styles" class="nav-button"
                 >Go to Classes and styles Page →</a
             >
+            <a href="/actions" class="nav-button">Go to Actions Page →</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
