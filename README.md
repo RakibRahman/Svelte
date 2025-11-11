@@ -25,6 +25,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - **Actions** - Element-level lifecycle functions for custom behavior
 - **Transitions** - Animate elements entering and leaving the DOM
 - **Snippets** - Reusable template chunks within components (Svelte 5)
+- **Context API** - Pass data through component tree without prop drilling
 
 ### State Management
 - Local component state with `$state` rune
@@ -67,8 +68,13 @@ src/
 │   │   ├── +page.svelte       # Stores demo page
 │   │   └── components/
 │   │       └── ResetCount.svelte # Store consumer component
-│   └── snippets/
-│       └── +page.svelte       # Snippets demo page
+│   ├── snippets/
+│   │   └── +page.svelte       # Snippets demo page
+│   └── context/
+│       ├── +page.svelte       # Context API demo page
+│       └── components/
+│           ├── UserAvatar.svelte # Context consumer
+│           └── UserProfileUpdate.svelte # Context updater
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
 ├── store/
@@ -234,3 +240,13 @@ See [snippets/+page.svelte](src/routes/snippets/+page.svelte) for snippet patter
 - **Passing as props** - Pass snippets to child components for flexible APIs
 - **Reusability** - DRY principle within components without creating separate files
 - **Use cases** - Table rows, list items, card templates, modal content
+
+### Context API
+See [context/+page.svelte](src/routes/context/+page.svelte) for context patterns:
+- **setContext()** - Provide data to child components in the component tree
+- **getContext()** - Retrieve data from parent components
+- **Reactive context** - Use `SvelteMap` or other reactive data structures for automatic updates
+- **Scoped state** - Context is scoped to component tree, not global like stores
+- **Avoid prop drilling** - Pass data through multiple component levels without explicit props
+- **Component libraries** - Perfect for theming, configuration, and shared component state
+- **Context vs Stores** - Use context for component-tree-scoped data, stores for global state

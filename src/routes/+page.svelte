@@ -39,6 +39,8 @@
             <a href="/transitions" class="nav-button"
                 >Go to Transitions Page →</a
             >
+            <a href="/context " class="nav-button">Go to Context API Page →</a>
+
             <a href="/stores" class="nav-button">Go to Stores Page →</a>
             <a href="/snippets " class="nav-button">Go to Snippets Page →</a>
         </nav>
