@@ -24,6 +24,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - **Classes and styles** - Dynamic class binding, style directives, CSS custom properties
 - **Actions** - Element-level lifecycle functions for custom behavior
 - **Transitions** - Animate elements entering and leaving the DOM
+- **Snippets** - Reusable template chunks within components (Svelte 5)
 
 ### State Management
 - Local component state with `$state` rune
@@ -62,10 +63,12 @@ src/
 │   │   └── +page.svelte       # Actions demo page
 │   ├── transitions/
 │   │   └── +page.svelte       # Transitions demo page
-│   └── stores/
-│       ├── +page.svelte       # Stores demo page
-│       └── components/
-│           └── ResetCount.svelte # Store consumer component
+│   ├── stores/
+│   │   ├── +page.svelte       # Stores demo page
+│   │   └── components/
+│   │       └── ResetCount.svelte # Store consumer component
+│   └── snippets/
+│       └── +page.svelte       # Snippets demo page
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
 ├── store/
@@ -85,7 +88,8 @@ src/
 │   ├── SelectElement.svelte   # Select element binding
 │   ├── GroupInputs.svelte     # Radio & checkbox groups
 │   ├── Box.svelte             # Component with CSS custom properties
-│   └── Canvas.svelte          # Drawing canvas component
+│   ├── Canvas.svelte          # Drawing canvas component
+│   └── Snippets.svelte        # Component demonstrating snippets
 └── shared/
     └── shared.svelte.ts       # Global state store
 ```
@@ -221,3 +225,12 @@ See [stores/+page.svelte](src/routes/stores/+page.svelte) and [store/store.ts](s
 - **Manual subscription** - Use `store.subscribe()` outside components (remember to unsubscribe)
 - **Update methods** - Use `set()` to replace values or `update()` to transform values
 - **Custom logic** - Add side effects in subscriptions (e.g., alert when count reaches a value)
+
+### Snippets
+See [snippets/+page.svelte](src/routes/snippets/+page.svelte) for snippet patterns:
+- **Define snippets** - Use `{#snippet name(params)}...{/snippet}` to create reusable template chunks
+- **Render snippets** - Use `{@render name(args)}` to render snippets
+- **Parameters** - Snippets can accept parameters like functions
+- **Passing as props** - Pass snippets to child components for flexible APIs
+- **Reusability** - DRY principle within components without creating separate files
+- **Use cases** - Table rows, list items, card templates, modal content

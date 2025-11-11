@@ -40,6 +40,7 @@
                 >Go to Transitions Page →</a
             >
             <a href="/stores" class="nav-button">Go to Stores Page →</a>
+            <a href="/snippets " class="nav-button">Go to Snippets Page →</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />

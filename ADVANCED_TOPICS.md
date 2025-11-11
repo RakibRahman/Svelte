@@ -523,7 +523,7 @@ Mark topics as you learn them:
 - [x] Stores
 - [ ] SvelteKit Data Loading
 - [ ] SvelteKit Layouts
-- [ ] Snippets
+- [x] Snippets
 - [ ] Context API
 - [ ] Form Actions
 - [ ] Advanced Routing
