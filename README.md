@@ -30,6 +30,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - Global shared state using shared modules
 - Array state mutations and reactivity
 - Derived/computed values with `$derived`
+- **Stores** - Reactive stores for cross-component state management (writable, readable, derived)
 
 ### TypeScript Integration
 - Type-safe component props
@@ -59,10 +60,16 @@ src/
 │   │   └── +page.svelte       # Classes and styles demo page
 │   ├── actions/
 │   │   └── +page.svelte       # Actions demo page
-│   └── transitions/
-│       └── +page.svelte       # Transitions demo page
+│   ├── transitions/
+│   │   └── +page.svelte       # Transitions demo page
+│   └── stores/
+│       ├── +page.svelte       # Stores demo page
+│       └── components/
+│           └── ResetCount.svelte # Store consumer component
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
+├── store/
+│   └── store.ts               # Global stores (writable, readable, derived)
 ├── componets/                 # Component library
 │   ├── BasicCounter.svelte    # Local state example
 │   ├── Counter.svelte         # Global state example
@@ -204,3 +211,13 @@ See [transitions/+page.svelte](src/routes/transitions/+page.svelte) for transiti
 - **Transition events** - Listen to `onintrostart`, `onintroend`, `onoutrostart`, `onoutroend`
 - **Key blocks** - Trigger transitions on value changes with `{#key}` blocks
 - **Global modifier** - Use `transition:name|global` to play transitions on parent block changes
+
+### Stores
+See [stores/+page.svelte](src/routes/stores/+page.svelte) and [store/store.ts](src/store/store.ts) for store patterns:
+- **Writable stores** - Create mutable stores with `writable()` for shared state
+- **Readable stores** - Create read-only stores with `readable()` for streaming data (e.g., time updates)
+- **Derived stores** - Compute values from other stores with `derived()`
+- **Auto-subscription** - Use `$store` syntax in components to automatically subscribe/unsubscribe
+- **Manual subscription** - Use `store.subscribe()` outside components (remember to unsubscribe)
+- **Update methods** - Use `set()` to replace values or `update()` to transform values
+- **Custom logic** - Add side effects in subscriptions (e.g., alert when count reaches a value)

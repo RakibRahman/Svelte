@@ -36,7 +36,10 @@
                 >Go to Classes and styles Page →</a
             >
             <a href="/actions" class="nav-button">Go to Actions Page →</a>
-            <a href="/transitions" class="nav-button">Go to Transitions Page →</a>
+            <a href="/transitions" class="nav-button"
+                >Go to Transitions Page →</a
+            >
+            <a href="/stores" class="nav-button">Go to Stores Page →</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
@@ -57,7 +60,11 @@
 
     <section class="learning-section">
         <h2>Global State & Props</h2>
-
+        <p>
+            Svelte ships with several reactive classes that you can use in place
+            of JavaScript built-in objects — namely Map, Set, Date, URL and
+            URLSearchParams.
+        </p>
         <div class="subsection">
             <h3>Global State (Shared Store)</h3>
             <p>These counters share the same state via a store:</p>
