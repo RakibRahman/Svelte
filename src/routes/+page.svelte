@@ -29,20 +29,16 @@
             read the documentation
         </p>
         <nav class="page-nav">
-            <a href="/logic" class="nav-button">Go to Logic Page →</a>
-            <a href="/events" class="nav-button">Go to Events Page →</a>
-            <a href="/bindings" class="nav-button">Go to Bindings Page →</a>
-            <a href="/classes-styles" class="nav-button"
-                >Go to Classes and styles Page →</a
-            >
-            <a href="/actions" class="nav-button">Go to Actions Page →</a>
-            <a href="/transitions" class="nav-button"
-                >Go to Transitions Page →</a
-            >
-            <a href="/context " class="nav-button">Go to Context API Page →</a>
-
-            <a href="/stores" class="nav-button">Go to Stores Page →</a>
-            <a href="/snippets " class="nav-button">Go to Snippets Page →</a>
+            <a href="/logic" class="nav-button">Logic & Control Flow</a>
+            <a href="/events" class="nav-button">Event Handling</a>
+            <a href="/bindings" class="nav-button">Form Bindings</a>
+            <a href="/classes-styles" class="nav-button">Classes & Styles</a>
+            <a href="/actions" class="nav-button">Actions</a>
+            <a href="/transitions" class="nav-button">Transitions</a>
+            <a href="/stores" class="nav-button">Stores</a>
+            <a href="/snippets" class="nav-button">Snippets</a>
+            <a href="/context" class="nav-button">Context API</a>
+            <a href="/blog" class="nav-button">Routing & Layouts</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
@@ -142,25 +138,32 @@
     }
 
     .page-nav {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
         margin: 2rem 0;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .nav-button {
-        display: inline-block;
-        padding: 1rem 2rem;
+        display: block;
+        padding: 0.75rem 1rem;
         background-color: #ff3e00;
         color: white;
         text-decoration: none;
         border-radius: 8px;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 0.95rem;
+        text-align: center;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(255, 62, 0, 0.3);
+        box-shadow: 0 2px 4px rgba(255, 62, 0, 0.3);
     }
 
     .nav-button:hover {
         background-color: #ff5722;
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(255, 62, 0, 0.4);
+        box-shadow: 0 4px 8px rgba(255, 62, 0, 0.4);
     }
 </style>

@@ -40,8 +40,11 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - Full TypeScript support configuration
 
 ### SvelteKit Features
-- File-based routing (`+page.svelte`)
-- Layout components (`+layout.svelte`)
+- **File-based routing** - URL-based routing with `+page.svelte` files
+- **Layout components** - Shared UI with `+layout.svelte` (root and nested layouts)
+- **Dynamic routes** - Parameter-based routes using `[slug]` syntax
+- **Server-side data loading** - Load functions in `+page.server.ts` and `+layout.server.ts`
+- **Error handling** - Built-in 404 handling with SvelteKit's error function
 - Page navigation and links
 - Auto adapter configuration
 
@@ -70,11 +73,20 @@ src/
 │   │       └── ResetCount.svelte # Store consumer component
 │   ├── snippets/
 │   │   └── +page.svelte       # Snippets demo page
-│   └── context/
-│       ├── +page.svelte       # Context API demo page
-│       └── components/
-│           ├── UserAvatar.svelte # Context consumer
-│           └── UserProfileUpdate.svelte # Context updater
+│   ├── context/
+│   │   ├── +page.svelte       # Context API demo page
+│   │   └── components/
+│   │       ├── UserAvatar.svelte # Context consumer
+│   │       └── UserProfileUpdate.svelte # Context updater
+│   └── blog/
+│       ├── +layout.svelte     # Blog root layout with navigation
+│       ├── +page.svelte       # Blog listing page
+│       ├── +page.server.ts    # Load blog post summaries
+│       └── [slug]/            # Dynamic route for individual posts
+│           ├── +layout.svelte # Nested layout with sidebar
+│           ├── +layout.server.ts # Load related posts
+│           ├── +page.svelte   # Individual blog post page
+│           └── +page.server.ts # Load specific post data
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
 ├── store/
@@ -97,7 +109,8 @@ src/
 │   ├── Canvas.svelte          # Drawing canvas component
 │   └── Snippets.svelte        # Component demonstrating snippets
 └── shared/
-    └── shared.svelte.ts       # Global state store
+    ├── shared.svelte.ts       # Global state store
+    └── data.ts                # Mock blog post data
 ```
 
 ## Getting Started
@@ -250,3 +263,14 @@ See [context/+page.svelte](src/routes/context/+page.svelte) for context patterns
 - **Avoid prop drilling** - Pass data through multiple component levels without explicit props
 - **Component libraries** - Perfect for theming, configuration, and shared component state
 - **Context vs Stores** - Use context for component-tree-scoped data, stores for global state
+
+### Routing & Layouts
+See [blog/](src/routes/blog/) for comprehensive routing and layout patterns:
+- **File-based routing** - Create routes by adding `+page.svelte` files in the routes directory
+- **Root layouts** - Use `+layout.svelte` to wrap all pages with shared UI (navigation, footer)
+- **Nested layouts** - Create layouts specific to route segments for additional structure
+- **Dynamic routes** - Use `[param]` syntax to create parameter-based routes (e.g., `/blog/[slug]`)
+- **Server-side data loading** - Use `+page.server.ts` and `+layout.server.ts` to fetch data before rendering
+- **Load functions** - Return data from `load()` functions to make it available to pages via `$props()`
+- **Error handling** - Use SvelteKit's `error()` function to throw 404 or other HTTP errors
+- **Route organization** - Group related routes in folders, each with their own layouts and data loading

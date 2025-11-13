@@ -521,10 +521,10 @@ A practical checklist of advanced topics to master after learning the fundamenta
 Mark topics as you learn them:
 
 - [x] Stores
-- [ ] SvelteKit Data Loading
-- [ ] SvelteKit Layouts
+- [x] SvelteKit Data Loading
+- [x] SvelteKit Layouts
 - [x] Snippets
-- [ ] Context API
+- [x] Context API
 - [ ] Form Actions
 - [ ] Advanced Routing
 - [ ] Hooks
