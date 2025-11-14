@@ -26,6 +26,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - **Transitions** - Animate elements entering and leaving the DOM
 - **Snippets** - Reusable template chunks within components (Svelte 5)
 - **Context API** - Pass data through component tree without prop drilling
+- **Form Actions** - Server-side form handling with progressive enhancement (SvelteKit)
 
 ### State Management
 - Local component state with `$state` rune
@@ -78,15 +79,17 @@ src/
 │   │   └── components/
 │   │       ├── UserAvatar.svelte # Context consumer
 │   │       └── UserProfileUpdate.svelte # Context updater
-│   └── blog/
-│       ├── +layout.svelte     # Blog root layout with navigation
-│       ├── +page.svelte       # Blog listing page
-│       ├── +page.server.ts    # Load blog post summaries
-│       └── [slug]/            # Dynamic route for individual posts
-│           ├── +layout.svelte # Nested layout with sidebar
-│           ├── +layout.server.ts # Load related posts
-│           ├── +page.svelte   # Individual blog post page
-│           └── +page.server.ts # Load specific post data
+│   ├── blog/
+│   │   ├── +layout.svelte     # Blog root layout with navigation
+│   │   ├── +page.svelte       # Blog listing page
+│   │   ├── +page.server.ts    # Load blog post summaries
+│   │   └── [slug]/            # Dynamic route for individual posts
+│   │       ├── +layout.svelte # Nested layout with sidebar
+│   │       ├── +layout.server.ts # Load related posts
+│   │       ├── +page.svelte   # Individual blog post page
+│   │       └── +page.server.ts # Load specific post data
+│   └── form-actions/
+│       └── +page.svelte       # Form actions demo page
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
 ├── store/
@@ -274,3 +277,13 @@ See [blog/](src/routes/blog/) for comprehensive routing and layout patterns:
 - **Load functions** - Return data from `load()` functions to make it available to pages via `$props()`
 - **Error handling** - Use SvelteKit's `error()` function to throw 404 or other HTTP errors
 - **Route organization** - Group related routes in folders, each with their own layouts and data loading
+
+### Form Actions
+See [form-actions/+page.svelte](src/routes/form-actions/+page.svelte) for form action patterns:
+- **Progressive enhancement** - Forms work without JavaScript, enhanced with JS when available
+- **Server-side validation** - Validate form data on the server with form actions
+- **Form actions** - Define actions in `+page.server.ts` to handle POST requests
+- **ActionData** - Access form submission results and validation errors in the page
+- **Named actions** - Use multiple form actions on a single page with `?/actionName`
+- **use:enhance** - Add client-side enhancements like loading states and optimistic UI
+- **Redirect after submit** - Use `redirect()` to navigate after successful form submission

@@ -39,6 +39,7 @@
             <a href="/snippets" class="nav-button">Snippets</a>
             <a href="/context" class="nav-button">Context API</a>
             <a href="/blog" class="nav-button">Routing & Layouts</a>
+            <a href="/form-actions" class="nav-button">Form Actions</a>
         </nav>
         <Nested />
         <img {src} alt="{name} dances." width="80px" />
