@@ -27,6 +27,7 @@ A hands-on practice repository for learning Svelte 5 and SvelteKit fundamentals,
 - **Snippets** - Reusable template chunks within components (Svelte 5)
 - **Context API** - Pass data through component tree without prop drilling
 - **Form Actions** - Server-side form handling with progressive enhancement (SvelteKit)
+- **API Routes** - RESTful endpoints with `+server.ts` files (SvelteKit)
 
 ### State Management
 - Local component state with `$state` rune
@@ -88,10 +89,16 @@ src/
 │   │       ├── +layout.server.ts # Load related posts
 │   │       ├── +page.svelte   # Individual blog post page
 │   │       └── +page.server.ts # Load specific post data
-│   └── form-actions/
-│       └── +page.svelte       # Form actions demo page
+│   ├── form-actions/
+│   │   ├── +page.svelte       # Form actions demo (todo app)
+│   │   └── +page.server.ts    # Server-side form actions & data loading
+│   └── api-routes/
+│       └── +page.svelte       # API routes documentation page
 ├── actions/
 │   └── trapFocus.svelte.ts    # Focus trap action
+├── lib/
+│   └── server/
+│       └── db.ts              # Mock database for form actions demo
 ├── store/
 │   └── store.ts               # Global stores (writable, readable, derived)
 ├── componets/                 # Component library
@@ -279,11 +286,23 @@ See [blog/](src/routes/blog/) for comprehensive routing and layout patterns:
 - **Route organization** - Group related routes in folders, each with their own layouts and data loading
 
 ### Form Actions
-See [form-actions/+page.svelte](src/routes/form-actions/+page.svelte) for form action patterns:
+See [form-actions/+page.svelte](src/routes/form-actions/+page.svelte) and [form-actions/+page.server.ts](src/routes/form-actions/+page.server.ts) for form action patterns:
 - **Progressive enhancement** - Forms work without JavaScript, enhanced with JS when available
-- **Server-side validation** - Validate form data on the server with form actions
-- **Form actions** - Define actions in `+page.server.ts` to handle POST requests
-- **ActionData** - Access form submission results and validation errors in the page
-- **Named actions** - Use multiple form actions on a single page with `?/actionName`
-- **use:enhance** - Add client-side enhancements like loading states and optimistic UI
-- **Redirect after submit** - Use `redirect()` to navigate after successful form submission
+- **Server-side validation** - Validate form data on the server with form actions and return errors
+- **Form actions** - Define actions in `+page.server.ts` to handle POST requests (create, delete, update)
+- **ActionData** - Access form submission results and validation errors via `form` prop
+- **Named actions** - Use multiple form actions on a single page with `?/actionName` syntax
+- **use:enhance** - Add client-side enhancements like preventing full page reload
+- **Error handling** - Return validation errors with `fail()` and display them to users
+- **Cookies** - Manage user sessions and state persistence with cookies
+- **TypeScript types** - Type-safe actions with `Actions` and `PageServerLoad` types
+
+### API Routes
+See [api-routes/+page.svelte](src/routes/api-routes/+page.svelte) for API routes documentation:
+- **Server endpoints** - Create API endpoints with `+server.ts` files
+- **HTTP methods** - Handle GET, POST, PUT, DELETE, PATCH requests
+- **JSON responses** - Return JSON data using the `json()` helper
+- **Request context** - Access request data, params, cookies, and more
+- **Dynamic routes** - Create parameterized endpoints with `[param]` syntax
+- **Error handling** - Return appropriate HTTP status codes and error messages
+- **Use cases** - RESTful APIs, webhooks, file uploads, third-party integrations

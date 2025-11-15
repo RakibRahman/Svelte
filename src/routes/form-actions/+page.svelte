@@ -1,20 +1,22 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
     import { fly, slide } from "svelte/transition";
-    let { data, form } = $props();
-    console.log({ data });
+    import type { ActionData, PageData } from "./$types";
+
+    let { data, form }: { data: PageData; form: ActionData } = $props();
 </script>
 
-<div class="centered">
-    <h1>todos</h1>
+<div class="container">
+    <h1>Todos</h1>
     {#if form?.error}
         <p class="error">{form.error}</p>
     {/if}
     <form method="POST" action="?/create" use:enhance>
         <input
+            type="text"
             name="title"
             placeholder="Add a new todo..."
-            value={form?.description ?? ""}
+            value={form?.title ?? ""}
             autocomplete="off"
             required
         />
@@ -39,63 +41,69 @@
 </div>
 
 <style>
-    .centered {
-        max-width: 30em;
-        margin: 2rem auto;
-        padding: 2rem;
+    .container {
+        max-width: 36rem;
+        margin: 0 auto;
+        padding: 2rem 1rem;
     }
 
     h1 {
         color: #333;
-        font-size: 2.5rem;
+        font-size: 2rem;
         margin-bottom: 1.5rem;
-        text-align: center;
     }
 
     .error {
-        color: #ff3e00;
-        background-color: #ffe8e6;
-        padding: 0.75rem;
-        border-radius: 4px;
+        color: #d32f2f;
+        background-color: #ffebee;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        border-left: 4px solid #d32f2f;
         margin-bottom: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
     }
 
     form {
         display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
     }
 
     input[type="text"],
     input:not([type]) {
         flex: 1;
-        padding: 0.75rem;
-        border: 2px solid #e0e0e0;
+        padding: 0.625rem 0.875rem;
+        border: 1px solid #ddd;
         border-radius: 6px;
         font-size: 1rem;
-        transition: border-color 0.2s;
+        transition: all 0.2s;
     }
 
     input[type="text"]:focus,
     input:not([type]):focus {
         outline: none;
         border-color: #ff3e00;
+        box-shadow: 0 0 0 3px rgba(255, 62, 0, 0.1);
     }
 
     button[type="submit"]:not([aria-label]) {
-        padding: 0.75rem 1.5rem;
+        padding: 0.625rem 1.25rem;
         background-color: #ff3e00;
         color: white;
         border: none;
         border-radius: 6px;
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
-        transition: background-color 0.2s;
+        transition: all 0.2s;
     }
 
     button[type="submit"]:not([aria-label]):hover {
-        background-color: #ff5722;
+        background-color: #e63900;
+        transform: translateY(-1px);
+    }
+
+    button[type="submit"]:not([aria-label]):active {
+        transform: translateY(0);
     }
 
     .todos {
@@ -112,21 +120,23 @@
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        padding: 0.75rem;
-        background-color: #f9f9f9;
+        padding: 0.875rem 1rem;
+        background-color: #f8f8f8;
+        border: 1px solid #eee;
         border-radius: 6px;
         margin-bottom: 0;
-        transition: background-color 0.2s;
+        transition: all 0.2s;
     }
 
     li form:hover {
         background-color: #f0f0f0;
+        border-color: #ddd;
     }
 
     span {
         flex: 1;
         color: #333;
-        font-size: 1rem;
+        font-size: 0.9375rem;
     }
 
     button[aria-label] {

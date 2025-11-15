@@ -1,46 +1,47 @@
 import { createTodo, deleteTodo, getTodos } from '$lib/server/db.js';
-import { fail } from "@sveltejs/kit";
+import { fail } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
 
+export const load: PageServerLoad = ({ cookies }) => {
+    let userId = cookies.get('userid');
 
-// type Todos = ReturnType<typeof getTodos>
-export function load({ cookies }) {
-    let id = cookies.get('userid');
-
-    if (!id) {
-        id = crypto.randomUUID();
-        cookies.set('userid', id, { path: '/' });
+    if (!userId) {
+        userId = crypto.randomUUID();
+        cookies.set('userid', userId, { path: '/' });
     }
 
     return {
-        todos: getTodos(id)
+        todos: getTodos(userId)
     };
-}
+};
 
-
-export const actions = {
+export const actions: Actions = {
     create: async ({ cookies, request }) => {
         const data = await request.formData();
         const userId = cookies.get('userid');
-        console.log({ formData: data, userId });
 
-        if (userId) {
-            try {
-                createTodo(userId, data.get('title') as string);
-            } catch (error) {
-                console.log({ error });
+        if (!userId) {
+            return fail(401, { error: 'Unauthorized', title: '' });
+        }
 
-                return fail(422, {
-                    description: data.get('description'),
-                    error: error instanceof Error ? error.message : 'An error occurred'
-                });
-            }
+        try {
+            createTodo(userId, data.get('title') as string);
+        } catch (error) {
+            return fail(422, {
+                title: (data.get('title') as string) || '',
+                error: error instanceof Error ? error.message : 'An error occurred'
+            });
         }
     },
+
     delete: async ({ cookies, request }) => {
         const data = await request.formData();
         const userId = cookies.get('userid');
-        if (userId) {
-            deleteTodo(userId, data.get('id') as string);
+
+        if (!userId) {
+            return fail(401, { error: 'Unauthorized' });
         }
+
+        deleteTodo(userId, data.get('id') as string);
     }
 };

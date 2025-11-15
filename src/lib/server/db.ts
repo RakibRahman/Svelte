@@ -1,47 +1,46 @@
-const db = new Map();
+export type Todo = {
+    id: string;
+    title: string;
+    done: boolean;
+};
 
-type Todo = {
-    id: string
-    title: string
-    done: boolean
-}
+const db = new Map<string, Todo[]>();
 
-export const getTodos = (userId: string): Todo[] => {
-    if (!db.get(userId)) {
+export function getTodos(userId: string): Todo[] {
+    if (!db.has(userId)) {
         db.set(userId, [
             {
                 id: crypto.randomUUID(),
                 title: "Learn Svelte",
                 done: false
             }
-        ])
+        ]);
     }
 
-    return db.get(userId)
+    return db.get(userId)!;
 }
 
-
-export function createTodo(userId: string, title: string) {
-    if (title.trim() === '') {
-        throw new Error('todo must have a description');
+export function createTodo(userId: string, title: string): void {
+    if (!title || title.trim() === '') {
+        throw new Error('Todo must have a title');
     }
-    const todos: Todo[] = db.get(userId);
-    console.log({ todos });
 
-    if (todos?.length > 0 && todos.find((todo) => todo.title === title)) {
-        throw new Error('todos must be unique');
+    const todos = getTodos(userId);
+
+    if (todos.some((todo) => todo.title === title)) {
+        throw new Error('Todo already exists');
     }
+
     todos.push({
         id: crypto.randomUUID(),
         title,
         done: false
     });
-
 }
 
-export function deleteTodo(userId: string, todoid: string) {
-    const todos: Todo[] = db.get(userId);
-    const index = todos.findIndex((todo) => todo.id === todoid);
+export function deleteTodo(userId: string, todoId: string): void {
+    const todos = getTodos(userId);
+    const index = todos.findIndex((todo) => todo.id === todoId);
 
     if (index !== -1) {
         todos.splice(index, 1);
