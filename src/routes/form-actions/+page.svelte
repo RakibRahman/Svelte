@@ -1,17 +1,20 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-
-    let { data } = $props();
+    import { fly, slide } from "svelte/transition";
+    let { data, form } = $props();
     console.log({ data });
 </script>
 
 <div class="centered">
     <h1>todos</h1>
-
+    {#if form?.error}
+        <p class="error">{form.error}</p>
+    {/if}
     <form method="POST" action="?/create" use:enhance>
         <input
-            name="description"
+            name="title"
             placeholder="Add a new todo..."
+            value={form?.description ?? ""}
             autocomplete="off"
             required
         />
@@ -19,15 +22,15 @@
     </form>
 
     <ul class="todos">
-        <!-- {#each data.todos as todo (todo.id)}
-            <li>
-                <form method="POST" action="?/delete" use:enhance>
+        {#each data.todos as todo (todo.id)}
+            <li in:fly={{ y: 20 }} out:slide>
+                <form method="POST" action="?/delete">
                     <input type="hidden" name="id" value={todo.id} />
-                    <span>{todo.description}</span>
+                    <span>{todo.title}</span>
                     <button type="submit" aria-label="Delete todo"></button>
                 </form>
             </li>
-        {/each} -->
+        {/each}
     </ul>
 
     {#if data.todos.length === 0}

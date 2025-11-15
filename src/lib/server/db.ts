@@ -22,13 +22,21 @@ export const getTodos = (userId: string): Todo[] => {
 
 
 export function createTodo(userId: string, title: string) {
-    const todos = db.get(userId);
+    if (title.trim() === '') {
+        throw new Error('todo must have a description');
+    }
+    const todos: Todo[] = db.get(userId);
+    console.log({ todos });
 
+    if (todos?.length > 0 && todos.find((todo) => todo.title === title)) {
+        throw new Error('todos must be unique');
+    }
     todos.push({
         id: crypto.randomUUID(),
         title,
         done: false
     });
+
 }
 
 export function deleteTodo(userId: string, todoid: string) {
